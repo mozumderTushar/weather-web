@@ -67,7 +67,7 @@ function init(dataFromServer) {
 
     let resultDescription = dataFromServer.weather[0].description;
     weatherDescriptionHeader.innerText = resultDescription.charAt(0).toUpperCase() + resultDescription.slice(1);
-    temperatureElement.innerText = Math.floor(dataFromServer.main.temp) + "°";
+    temperatureElement.innerText = Math.round((dataFromServer.main.temp - 32) * 5/9) + "°";
     windSpeedElement.innerText = 'Winds at ' + Math.floor(dataFromServer.wind.speed) + ' m/s';
     cityHeader.innerText = dataFromServer.name;
     humidityElement.innerText = 'Humidity levels at ' + dataFromServer.main.humidity + '%';
