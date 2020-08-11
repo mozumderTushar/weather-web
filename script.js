@@ -14,7 +14,7 @@ function getSearchMethod(searchTerm) {
 //api
 function searchWeather(searchTerm) {
     getSearchMethod(searchTerm);
-    fetch(`http://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`)
+    fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?${searchMethod}=${searchTerm}&APPID=${appId}&units=${units}`)
     .then(response => response.json())
     .then(data => {
         init(data);
