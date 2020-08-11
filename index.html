@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
     <link rel="stylesheet" href="style.css">
 
   </head>
@@ -14,20 +15,20 @@
 
     <section id="searchContainer">
         <input type="text" class="searchControl" id="searchInput" placeholder="City Name or ZipCode">
-        <button class="searchControls" id="searchBtn">Search</button>
+        <button class="searchControl" id="searchBtn">Search</button>
     </section>
 
-    <section id="weatherControl">
+    <section id="weatherContainer">
         <div id="weatherDescription">
             <h1 id="cityHeader"></h1>
             <div id="weatherMain">
                 <div id="temperature"></div>
                 <div id="weatherDescriptionHeader"></div>
-                <div id="documentIconImg"></div>
+                <div id="documentIconImg" ></div>
             </div>
             <hr>
-            <div id="windSpeed"></div>
-            <div id="humidity"></div>
+            <div id="windSpeed" class="bottom-details"></div>
+            <div id="humidity" class="bottom-details"></div>
         </div>
     </section>
 

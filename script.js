@@ -26,7 +26,7 @@ function init(dataFromServer) {
     console.log(dataFromServer);
     switch (dataFromServer.weather[0].main) {
         case 'Clear':
-            document.body.style.backgroundImage = 'url("img/clear.jpg")';
+            let img = document.body.style.backgroundImage = 'url("img/clear.jpg")';
             break;
         
         case 'Clouds':
@@ -36,6 +36,7 @@ function init(dataFromServer) {
         case 'Rain':
         case 'Drizzle':
         case 'Mist':
+        case 'Haze':
             document.body.style.backgroundImage = 'url("img/rain.jpg")';
             break;
 
@@ -59,12 +60,30 @@ function init(dataFromServer) {
     let cityHeader = document.getElementById('cityHeader');
     let weatherIcon = document.getElementById('documentIconImg');
 
-    weatherIcon.src = 'http://openweathermap.org/img/wn/'+ dataFromServer.weather[0].icon + '.png';
+    weatherIcon.src  ='http://openweathermap.org/img/wn/'+ dataFromServer.weather[0].icon + '.png' ;
+
+    // weatherIcon.src = 'http://openweathermap.org/img/wn/'+ dataFromServer.weather[0].icon + '.png';
     // weatherIcon.src = 'http://openweathermap.org/img/wn/10d@2x.png'
 
     let resultDescription = dataFromServer.weather[0].description;
-    weatherDescriptionHeader.innerText = resultDescription;
+    weatherDescriptionHeader.innerText = resultDescription.charAt(0).toUpperCase() + resultDescription.slice(1);
+    temperatureElement.innerText = Math.floor(dataFromServer.main.temp) + "°";
+    windSpeedElement.innerText = 'Winds at ' + Math.floor(dataFromServer.wind.speed) + ' m/s';
+    cityHeader.innerText = dataFromServer.name;
+    humidityElement.innerText = 'Humidity levels at ' + dataFromServer.main.humidity + '%';
 
+    setPositionForWeatherInfo();
+}
+
+//display all
+function setPositionForWeatherInfo() {
+    let weatherContainer = document.getElementById('weatherContainer');
+    let weatherContainerHight = weatherContainer.clientHeight;
+    let weatherContainerWidth = weatherContainer.clientWidth;
+
+    weatherContainer.style.left = `calc(50% - ${weatherContainerWidth/2}px)`;
+    weatherContainer.style.top = `calc(50% - ${weatherContainerHight/3}px)`;
+    weatherContainer.style.visibility = 'visible';
 }
 
 //searchBtn
